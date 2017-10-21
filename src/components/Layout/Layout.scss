@@ -1,0 +1,11 @@
+.Layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  .Layout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+}
