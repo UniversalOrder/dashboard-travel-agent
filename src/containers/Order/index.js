@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, withRouter, BrowserRouter as Router, Link } from 'react-router-dom'
+import { Web3 } from 'web3'
+import BigNumber from 'bignumber.js'
 import { fetchOrder } from '../../business/order/action-creators'
 import Layout from '../../components/Layout'
 import './Order.css'
 
 class Order extends Component {
   state = {
-    order: false
+    order: false,
+    web3Eth: null,
+    balance: 0
   }
 
   handleClickRequestOrder = () => {
@@ -16,6 +20,28 @@ class Order extends Component {
 
   handleClickCreateOrder = () => {
     this.props.fetchData()
+  }
+
+  componentWillMount = () => {
+    this.getBalanceEth()
+  }
+
+  getBalance = () => {
+    return new Promise (function (resolve, reject) {
+      window.web3.eth.getBalance(window.web3.eth.accounts[0], function (error, result) {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      })
+    })
+  }
+
+  getBalanceEth = async () => {
+    let balance = await this.getBalance()
+    balance = await window.web3.fromWei(balance.toNumber())
+    this.setState({ balance })
   }
 
   render () {
@@ -30,10 +56,9 @@ class Order extends Component {
     }
 
     return (
-
       <Layout>
         <div className='Order'>
-          <h1>Amount ETH</h1>
+          <h1><span className='balance'>{ this.state.balance }</span> Amount ETH</h1>
           <h1>ORDER</h1>
           <div className='order'>
             <div>
