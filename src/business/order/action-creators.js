@@ -70,7 +70,7 @@ export const fetchOrder = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/xml',
-        'authorization-key': REACT_APP_PROXY_KEY_API.
+        'authorization-key': process.env.REACT_APP_PROXY_KEY_API
       },
       body: dataXML
     })
