@@ -10,7 +10,11 @@ class Order extends Component {
     order: false
   }
 
-  componentDidMount = () => {
+  handleClickRequestOrder = () => {
+    this.props.fetchData()
+  }
+
+  handleClickCreateOrder = () => {
     this.props.fetchData()
   }
 
@@ -29,6 +33,7 @@ class Order extends Component {
 
       <Layout>
         <div className='Order'>
+          <h1>Amount ETH</h1>
           <h1>ORDER</h1>
           <div className='order'>
             <div>
@@ -39,9 +44,11 @@ class Order extends Component {
                 <li><b>Date</b>: 2017-11-29</li>
                 <li><b>Name</b>: Kronos</li>
               </ul>
+              { (order != '') && <div className="result">{ order }</div> }
             </div>
             <div>
-              <button>Request order</button>
+              { (order == '') && <button onClick={this.handleClickRequestOrder}>Request order</button> }
+              { (order != '') && <button onClick={this.handleClickCreateOrder}>Create order</button> }
             </div>
           </div>
         </div>
