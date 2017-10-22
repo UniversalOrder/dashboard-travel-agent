@@ -8,6 +8,7 @@ const Layout = ({
 }) => (
   <div className='Layout-wrapper'>
     <div className={`Layout-container ${className}`}>
+      <div className="travel-agent">TRAVEL AGENT</div>
       { children }
     </div>
   </div>

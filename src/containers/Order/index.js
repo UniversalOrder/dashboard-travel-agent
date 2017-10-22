@@ -29,9 +29,21 @@ class Order extends Component {
 
       <Layout>
         <div className='Order'>
-          <h1>Order</h1>
-          <button>Order</button>
-          <button>Accept order</button>
+          <h1>ORDER</h1>
+          <div className='order'>
+            <div>
+              <ul>
+                <li><b>AirportCode</b>: LHR</li>
+                <li><b>AirlineId</b>: C9</li>
+                <li><b>AirlineId</b>: BCN</li>
+                <li><b>Date</b>: 2017-11-29</li>
+                <li><b>Name</b>: Kronos</li>
+              </ul>
+            </div>
+            <div>
+              <button>Request order</button>
+            </div>
+          </div>
         </div>
       </Layout>
     )
