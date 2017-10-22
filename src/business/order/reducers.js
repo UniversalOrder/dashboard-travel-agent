@@ -4,7 +4,7 @@ import {
   RECEIVE_ORDER
 } from './actions'
 
-const requestOrder (state = false, action) {
+export const requestOrder = (state = false, action) => {
   switch (action.type) {
     case REQUEST_ORDER:
       return action.isFetching
@@ -13,7 +13,7 @@ const requestOrder (state = false, action) {
   }
 }
 
-const failureOrder = (state = false, action) => {
+export const failureOrder = (state = false, action) => {
   switch (action.type) {
     case FAILURE_ORDER:
       return action.hasErrored
@@ -22,10 +22,10 @@ const failureOrder = (state = false, action) => {
   }
 }
 
-const vouchers = (state = [], action) => {
+export const order = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_ORDER:
-      return action.vouchers
+      return action.order
     default:
       return state
   }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, withRouter, BrowserRouter as Router, Link } from 'react-router-dom'
-import { setFilterStatusOrders } from '../../business/order/actions'
+import { fetchOrder } from '../../business/order/action-creators'
+import Layout from '../../components/Layout'
 import './Order.css'
 
 class Order extends Component {
@@ -14,15 +15,13 @@ class Order extends Component {
   }
 
   render () {
-    const { order, isFetching } = this.props
+    const { order, isFetching, hasErrored } = this.props
 
     if (hasErrored) {
       return <p>Sorry! Loading order error.</p>
     }
 
-    if (order) {
-      return <Redirect to='/' />
-    } else if (isFetching) {
+    if (isFetching) {
       return <p>Chargement…</p>
     }
 
@@ -41,7 +40,7 @@ class Order extends Component {
 
 const mapStateToProps = state => {
   return {
-    orders: state.order,
+    order: state.order,
     hasErrored: state.failureOrder,
     isFetching: state.requestOrder
   }
@@ -49,7 +48,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: params => dispatch(fetchOrders()),
+    fetchData: params => dispatch(fetchOrder()),
   }
 }
 

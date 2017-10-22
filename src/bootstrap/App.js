@@ -17,7 +17,6 @@ const App = () => (
     <Router>
       <Switch>
         <Route exact path='/' component={Order} />
-        <Redirect from='*' to='/' />
       </Switch>
     </Router>
   </Provider>

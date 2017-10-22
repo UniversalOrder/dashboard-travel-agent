@@ -1,6 +1,5 @@
 import React from 'react'
 import './Layout.css'
-import Footer from '../Footer'
 
 const Layout = ({
   className,
@@ -11,7 +10,6 @@ const Layout = ({
     <div className={`Layout-container ${className}`}>
       { children }
     </div>
-    <Footer />
   </div>
 )
 
